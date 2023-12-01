@@ -5,6 +5,7 @@ let intoaudio=new Audio("songs/5.mp3")
 let decoration=document.getElementById('deco')
 let masterplay=document.getElementById('masterplay')
 let songindex=0;
+let name=document.querySelector('#name')
 let next=document.querySelector('#next')
 let back=document.querySelector('#back')
 let progressbar=document.querySelector('#progressbar')
@@ -21,7 +22,7 @@ let songs=[
     {songname: 'Sanam re',filepath: 'songs/7.mp3',coverpath:'covers/8.jpg'},
 ]
 
-
+songnamexl.innerHTML=``
 
 
 songplaylist.forEach((ele,i)=>{
@@ -60,13 +61,14 @@ Array.from(document.getElementsByClassName('play-icon')).forEach((element,ind)=>
             masterplay.classList.remove('fa-circle-play')
         masterplay.classList.add('fa-circle-pause')
         decoration.innerHTML=``
+        songnamexl.innerHTML=`${songs[songindex].songname}`
         }
     })
 })
 
 
 
-//add event listner
+//on clicking on play button
 masterplay.addEventListener('click',()=>{
     
     if(intoaudio.paused|| intoaudio.currentTime==0){
@@ -74,6 +76,7 @@ masterplay.addEventListener('click',()=>{
         masterplay.classList.remove('fa-circle-play')
         masterplay.classList.add('fa-circle-pause')
         decoration.style.opacity=1
+        songnamexl.innerHTML=`${songs[songindex].songname}`
     }
     else {
         intoaudio.pause();
@@ -105,7 +108,7 @@ if(songindex>8){
     intoaudio.play();
     masterplay.classList.remove('fa-circle-play')
     masterplay.classList.add('fa-circle-pause')
-
+    songnamexl.innerHTML=`${songs[songindex].songname}`
 
 })
 
@@ -120,5 +123,6 @@ back.addEventListener('click',()=>{
     intoaudio.play();
     masterplay.classList.remove('fa-circle-play')
     masterplay.classList.add('fa-circle-pause')
+    songnamexl.innerHTML=`${songs[songindex].songname}`
 
 })
